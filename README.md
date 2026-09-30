@@ -289,3 +289,13 @@ Agenci i klauzule, wypożyczenia, Grand Prix i reprezentacje, Puchar Polski, leg
 - **Kasyno**: wielkie koło ruletki kręci się na ścianie.
 - **Dom rodziców**: całe mieszkanie (salon, jadalnia, kuchnia, sypialnie, łazienka) zamiast jednego pokoju; mama w kuchni, tata w salonie, brat w swoim pokoju, siostra chodzi po domu.
 - Kolizje ścian i mebli liczone z geometrii modeli; gracz nie utknie w meblu (automatyczne przesunięcie na wolne miejsce).
+
+## Wersja 2.8 — Blokowisko: droga z osiedla, reguły ruchu, osiedle willowe, wydajność
+- **Nowy start kariery**: 16-latek z bloku z wielkiej płyty, krótki przerywnik i wybór drogi: 🏁 Żużel (jak dotąd), 🧢 Rejon (bez licencji — robota za garażami, egzamin na licencję później) albo ⚖️ Dwa życia (obie naraz, każde zajęcie męczy bardziej).
+- **Zakładka „Rejon”**: reputacja na osiedlu (6 rang), 4 półki zleceń (drobnica → średnia → premium → hurt) z wkładem własnym, umiejętności (handel, charyzma, spryt), czujność policji, konflikty z innymi ekipami, rozmowy (Chudy, Seba, dzielnicowy, mama), 13 osiągnięć, pasek „wyjście z blokowiska” i kupno domu.
+- **Osiedle**: legalne fuchy (ulotki, myjnia, warsztat, siłownia pod chmurką); **Stadion**: egzamin na licencję.
+- **Reguły ruchu**: pieszo tylko po chodnikach — na jezdnię tylko po pasach; zebry przy skrzyżowaniach i na długich ulicach, znaki D-6, sygnalizacja świetlna na głównych skrzyżowaniach (auta stają na czerwonym i przepuszczają pieszego), mandat za czerwone przy policji.
+- **Osiedle „Słoneczne”** na południu miasta: domy z ogrodami, płotami, podjazdami i basenami; trzy domy na sprzedaż (kupione — wejście do twojego mieszkania).
+- **Wydajność**: automatyczna rozdzielczość (Ustawienia → Grafika), cienie co drugą klatkę przy spadkach, przycinanie instancji do kadru, LOD dzielnicy i drobnych detali, statyczne macierze, modele miasta ładowane w tle.
+- Poprawka: błąd „Race is not defined” przy starcie (blokował przywracanie trybun na stadion meczowy).
+- Opis systemów, modele do pobrania i instrukcja importu: `docs/BLOKOWISKO.md`.

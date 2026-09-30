@@ -341,6 +341,6 @@ const RoomLife = {
   // strażnik: mecz, wyścig albo ekran menedżera — trybuny wracają na stadion meczowy
   const back = () => { if (Stad.moved.length && Walk.room !== 'miasto') Stad.place(false); };
   const bmd = MatchDay.begin; MatchDay.begin = function (...a) { if (Stad.moved.length) { Stad.place(false); } return bmd.apply(this, a); };
-  const brs = Race.start; Race.start = function (...a) { if (Stad.moved.length) Stad.place(false); return brs.apply(this, a); };
+  if (typeof Race !== 'undefined') { const brs = Race.start; Race.start = function (...a) { if (Stad.moved.length) Stad.place(false); return brs.apply(this, a); }; } // Race nie istnieje — bez tego reszta bloku się nie wykonywała
   const bsh = UI.show; UI.show = function (w) { const r = bsh.call(this, w); if (w !== 'md') back(); return r; };
 })();
