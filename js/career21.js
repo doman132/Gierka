@@ -299,3 +299,41 @@ const Wille = {
   const bb = Rejon.buy;
   Rejon.buy = function (id) { bb.call(this, id); Wille.refresh(); };
 })();
+
+/* =========================================================
+   BEZPIECZNIK: miejsce, którego nie udało się zbudować
+   Gdy budowa miasta się wywróci (np. brak lub błąd modelu),
+   gra nie wchodzi do nieistniejącego pokoju (wcześniej: błąd
+   „reading 'name'” w każdej klatce), tylko wraca do menu.
+   Czerwony pasek pokazuje PIERWSZY błąd — to on jest przyczyną.
+   ========================================================= */
+const Safe = {
+  fail(key) {
+    if (Safe._busy) return; Safe._busy = true;
+    try { Walk.room = null; Walk.stopQuiet(); } catch (e) { Walk.active = false; }
+    UI.show('mgr'); if (Game.s && Game.s.mode === 'career') Career.render(); else if (typeof UI.render === 'function') UI.render();
+    UI.toast(`Nie udało się wczytać miejsca „${key || '?'}” — przyczyna na czerwonym pasku (zrób zrzut).`, true);
+    setTimeout(() => { Safe._busy = false; }, 500);
+  },
+};
+(() => {
+  const M = Miasto, bb = M.build;
+  M.build = function (cb) { return bb.call(this, function () { if (World.rooms && World.rooms.miasto) return cb && cb.apply(this, arguments); Safe.fail('miasto'); }); };
+  const be = Walk.enterRoom;
+  Walk.enterRoom = function (key) { if (World.rooms && !World.rooms[key]) { Safe.fail(key); return; } return be.call(this, key); };
+  const bf = Walk.frame;
+  Walk.frame = function (dt) { if (Walk.room && !(World.rooms && World.rooms[Walk.room])) { Safe.fail(Walk.room); return; } return bf.call(this, dt); };
+})();
+// pasek błędu: pierwszy błąd zostaje na wierzchu (kolejne to zwykle skutki), licznik kolejnych
+window.addEventListener('load', () => {
+  Main.err = function (e) {
+    const msg = ((e && (e.stack || e.message)) || String(e)).split('\n').slice(0, 4).join(' | ');
+    console.error(e);
+    if (Main._lastErr === msg) return; Main._lastErr = msg;
+    if (!Main._firstErr) Main._firstErr = msg; else Main._errN = (Main._errN || 0) + 1;
+    let bar = document.getElementById('errbar');
+    if (!bar) { bar = document.createElement('div'); bar.id = 'errbar'; document.body.appendChild(bar); bar.addEventListener('click', () => { bar.hidden = true; Main._firstErr = null; Main._errN = 0; }); }
+    bar.hidden = false;
+    bar.textContent = `Błąd gry (kliknij, aby zamknąć; zrób zrzut i wyślij): ${Main._firstErr}${Main._errN ? `  [+${Main._errN} kolejnych, ostatni: ${msg.slice(0, 160)}]` : ''}`;
+  };
+}, { once: true });
