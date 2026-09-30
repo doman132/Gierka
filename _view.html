@@ -1,0 +1,16 @@
+<!doctype html><html><body style="margin:0;background:#9aa">
+<script src="lib/three.min.js"></script><script src="lib/GLTFLoader.js"></script>
+<script>
+const P=new URLSearchParams(location.search), keys=(P.get('k')||'').split(','), split=P.get('split'), dir=P.get('d')||'cat';
+const R=new THREE.WebGLRenderer({antialias:true});R.setSize(innerWidth,innerHeight);R.outputEncoding=THREE.sRGBEncoding;document.body.appendChild(R.domElement);
+const S=new THREE.Scene();S.add(new THREE.HemisphereLight(0xffffff,0x777777,1.3));const d=new THREE.DirectionalLight(0xffffff,0.9);d.position.set(3,5,4);S.add(d);
+const C=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,500);window.info={};
+function label(t,x,z){const c=document.createElement('canvas');c.width=256;c.height=64;const g=c.getContext('2d');g.fillStyle='#000';g.fillRect(0,0,256,64);g.fillStyle='#ff0';g.font='bold 26px sans-serif';g.fillText(t,6,42);const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c)}));s.scale.set(1.6,0.4,1);s.position.set(x,0.05,z+1.35);S.add(s);}
+function put(o,i,cols,name){const b=new THREE.Box3().setFromObject(o),sz=b.getSize(new THREE.Vector3()),c=b.getCenter(new THREE.Vector3());const w=new THREE.Group();const inner=new THREE.Group();inner.add(o);o.updateMatrixWorld(true);inner.position.set(-c.x,-b.min.y,-c.z);w.add(inner);w.scale.setScalar(2.2/Math.max(sz.x,sz.y,sz.z,1e-6));const x=(i%cols)*3,z=Math.floor(i/cols)*3.4;w.position.set(x,0,z);S.add(w);label(name,x,z);info[name]=[sz.x,sz.y,sz.z].map(v=>+v.toFixed(2));}
+function cam(n,cols){const rows=Math.ceil(n/cols);C.position.set(cols*1.5-1.5,5+rows*2.2,rows*3.4+5);C.lookAt(cols*1.5-1.5,0.6,rows*1.7-1);C.updateProjectionMatrix();R.render(S,C);document.title='done';}
+const L=new THREE.GLTFLoader();
+if(split){L.load('models/'+dir+'/'+split+'.glb',g=>{g.scene.updateMatrixWorld(true);let list=g.scene.children;while(list.length==1&&list[0].children.length&&!list[0].isMesh)list=list[0].children;list=[...list];const cols=Math.ceil(Math.sqrt(list.length*1.4));
+ list.forEach((o,i)=>{const m=o.matrixWorld.clone();o.parent.remove(o);o.matrix.copy(m);o.matrix.decompose(o.position,o.quaternion,o.scale);put(o,i,cols,i+':'+(o.name||'').slice(0,10));});cam(list.length,cols);});}
+else{let n=0;const cols=Math.min(6,keys.length);keys.forEach((k,i)=>L.load('models/'+dir+'/'+k+'.glb',g=>{put(g.scene,i,cols,k);if(++n==keys.length)cam(keys.length,cols);},null,()=>{info[k]='ERR';if(++n==keys.length)cam(keys.length,cols);}));}
+S.add(new THREE.GridHelper(60,60));
+</script></body></html>

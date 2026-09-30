@@ -1,0 +1,16 @@
+{
+  "name": "Speedway Empire 3D",
+  "short_name": "Speedway 3D",
+  "description": "Menedżer klubu żużlowego i kariera zawodnika w 3D (fikcyjne kluby i zawodnicy).",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#101216",
+  "theme_color": "#E0632E",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

@@ -1,0 +1,105 @@
+<meta charset="utf-8">
+<title>Speedway Empire 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Menedżer klubu żużlowego z meczami 15 biegów w 3D: skład w limicie KSM, treningi, kontrakty, finanse i play-off.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#E0632E">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<!-- Warstwa menedżerska -->
+<div id="mgr"></div>
+
+<!-- Dzień meczowy: świat 3D + grafika telewizyjna -->
+<div id="md" hidden>
+  <canvas id="gl" aria-label="Widok 3D toru żużlowego"></canvas>
+  <div id="md-hud" class="hud" hidden>
+    <header class="topline"><div class="brand">Speedway<b>Empire 3D</b></div><div class="score" id="md-score"></div></header>
+    <aside class="order" id="md-order"></aside>
+    <div class="ticker" id="md-ticker" aria-live="polite"></div>
+    <footer class="controls"><div class="seg" id="md-cams"></div><div class="seg" id="md-speeds"></div></footer>
+  </div>
+  <!-- Zegary kierowcy i przyciski dotykowe (gdy gracz prowadzi motocykl) -->
+  <div id="ride-hud" hidden>
+    <div class="gauge"><b id="rh-speed">0</b><small>km/h</small>
+      <div class="gripbar" title="Przyczepność: czerwony = za szybko na łuk"><i id="rh-grip"></i></div><small>przyczepność</small>
+      <div class="rh-row"><span id="rh-pos"></span><span id="rh-lap"></span></div></div>
+    <div id="rh-tip"></div>
+    <div class="touch"><button id="rh-left" aria-label="Do krawężnika">◀</button><button id="rh-right" aria-label="Na zewnątrz">▶</button><button id="rh-thr" aria-label="Gaz">GAZ</button></div>
+  </div>
+  <div id="md-panel"></div>
+</div>
+
+<div id="modal"></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<!-- Biblioteki Three.js r128 (MIT) leżą lokalnie w lib/, więc gra działa bez internetu -->
+<!-- Kolejność: biblioteka 3D → geometria → dane → symulacja → świat 3D → gra → dzień meczowy → interfejs → start -->
+<script src="lib/three.min.js"></script>
+<!-- Efekty końcowe Three.js r128 (poświata, korekcja gamma) -->
+<script src="lib/EffectComposer.js"></script>
+<script src="lib/RenderPass.js"></script>
+<script src="lib/ShaderPass.js"></script>
+<script src="lib/CopyShader.js"></script>
+<script src="lib/LuminosityHighPassShader.js"></script>
+<script src="lib/UnrealBloomPass.js"></script>
+<script src="lib/GammaCorrectionShader.js"></script>
+<script src="lib/GLTFLoader.js"></script>
+<script src="lib/fflate.min.js"></script>
+<script src="lib/NURBSUtils.js"></script>
+<script src="lib/NURBSCurve.js"></script>
+<script src="lib/FBXLoader.js"></script>
+<script src="lib/SkeletonUtils.js"></script>
+<script src="lib/Water.js"></script>
+<script src="js/track.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/crowd.js"></script>
+<script src="js/people.js"></script>
+<script src="js/humans.js"></script>
+<script src="js/ridermodel.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/grounds.js"></script>
+<script src="js/materials.js"></script>
+<script src="js/props.js"></script>
+<script src="js/furn.js"></script>
+<script src="js/rooms.js"></script>
+<script src="js/bike.js"></script>
+<script src="js/world.js"></script>
+<script src="js/club.js"></script>
+<script src="js/talk.js"></script>
+<script src="js/career.js"></script>
+<script src="js/city.js"></script>
+<script src="js/race.js"></script>
+<script src="js/matchday.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/walk.js"></script>
+<script src="js/venues.js"></script>
+<script src="js/career2.js"></script>
+<script src="js/career3.js"></script>
+<script src="js/career4.js"></script>
+<script src="js/career5.js"></script>
+<script src="js/career6.js"></script>
+<script src="js/career7.js"></script>
+<script src="js/career8.js"></script>
+<script src="js/career9.js"></script>
+<script src="js/career10.js"></script>
+<script src="js/career11.js"></script>
+<script src="js/career12.js"></script>
+<script src="js/career13.js"></script>
+<script src="js/career14.js"></script>
+<script src="js/career15.js"></script>
+<script src="js/career16.js"></script>
+<script src="js/career17.js"></script>
+<script src="js/career18.js"></script>
+<script src="js/mapdefs.js"></script>
+<script src="js/career19.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/main.js"></script>
