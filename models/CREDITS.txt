@@ -1,0 +1,144 @@
+Modele ludzi (kibice, obsługa toru) — autor: Quaternius (https://quaternius.com)
+Licencja: CC0 1.0 (domena publiczna) — wolno używać, zmieniać i rozpowszechniać bez warunków.
+
+man1.glb, man2.glb (Man in Suit), man3.glb, man4.glb (Man in Long Sleeves — także zawodnik na motocyklu)
+  — pakiet "Animated Men Pack": https://poly.pizza/bundle/Animated-Men-Pack-DAC9SDgMQT
+woman1.glb (Casual) — https://poly.pizza/m/qJ2gsTUBHL
+woman2.glb (Punk)   — https://poly.pizza/m/djXoqejw6w
+  — pakiet "Ultimate Modular Women Pack" (tylko modele oznaczone CC0)
+
+Motocykl żużlowy: własna geometria w js/bike.js (bez zewnętrznych modeli).
+Biblioteka Three.js r128 (lib/): licencja MIT.
+
+Samochody i budynki (v0.9):
+cars/sedan1.glb, cars/sedan2.glb, cars/hatch1.glb — Quaternius, CC0 (https://poly.pizza/m/1mkmFkAz5v, https://poly.pizza/m/Cz6yDaUcM9, https://poly.pizza/m/unqqkULtRU)
+cars/minibus.glb — autor: jeremy (https://poly.pizza/u/jeremy), CC-BY 3.0, via Poly Pizza (https://poly.pizza/m/9hUUD2DWk1v)
+cars/wagon.glb — autor: Poly by Google, CC-BY 3.0, via Poly Pizza (https://poly.pizza/m/75h3mi6uHuC)
+cars/teamvan.glb — autor: Poly by Google, CC-BY 3.0, via Poly Pizza (https://poly.pizza/m/41Rsh7ds1om)
+kcars/ (karetka, ciągnik) — Kenney, Car Kit, CC0 (https://kenney.nl/assets/car-kit)
+city/ (budynki) — Kenney, City Kit Commercial, CC0 (https://kenney.nl/assets/city-kit-commercial)
+CC-BY wymaga podania autorów — w grze są w pliku CREDITS i w README (przy publikacji dodaj je też do ekranu „O grze”).
+
+Ludzie, meble, domy (v1.1):
+rb/ — Microsoft Rocketbox Avatar Library (awatary i animacje), licencja MIT, Copyright (c) Microsoft Corporation.
+      https://github.com/microsoft/Microsoft-Rocketbox — pełny tekst licencji: rb/LICENSE.txt (musi zostać dołączony przy publikacji).
+      Tekstury zmniejszone do 1024 px (tylko mapy kolorów).
+ph/ — Poly Haven (https://polyhaven.com), licencja CC0: Sofa_01, modern_arm_chair_01, modern_coffee_table_01, wooden_display_shelves_01,
+      wooden_bookshelf_worn, potted_plant_01/02/04, hanging_picture_frame_01, fancy_picture_frame_01, side_table_01, metal_office_desk,
+      classic_laptop, gaming_console, steel_frame_shelves_02, tool_cart, metal_tool_chest, bench_vice_01, old_tyre, Barrel_01,
+      bar_chair_round_01, wine_bottles_01, CashRegister_01, street_lamp_01, metal_trash_can, concrete_road_barrier, fire_hydrant,
+      modern_ceiling_lamp_01, Television_01, Shelf_01 (autorzy wymienieni na stronach modeli; CC0 nie wymaga podpisu).
+kfurn/ — Kenney Furniture Kit, CC0 (https://kenney.nl/assets/furniture-kit)
+suburb/ — Kenney City Kit Suburban, CC0 (https://kenney.nl/assets/city-kit-suburban)
+
+Tekstury PBR (v1.2):
+tex/ — Poly Haven (https://polyhaven.com/textures), licencja CC0, rozdzielczość 1k (kolor, normalne, szorstkość):
+      wood_floor, floor_tiles_06, large_grey_tiles, concrete_floor_02, rubber_tiles, painted_plaster_wall, grey_plaster,
+      concrete_panels, brushed_concrete, corrugated_iron, painted_metal_shutter, asphalt_02, concrete_pavement,
+      rough_pine_door, metal_plate, brick_wall_02, concrete_tile_facade, dark_wooden_planks, white_plaster_02.
+
+v1.3:
+rb/ — dodatkowe awatary Microsoft Rocketbox (MIT): Male_Adult_02,04,06,07,09,10,11,13,14,16–21, Female_Adult_02,03,05,06,08,09,
+      Construction_Male_02, Security_Male_01, Police_Male_01, Medical_Male_02, Business_Male_01, Business_Male_03, Delivery_Male_01, Wood_Male_01.
+rb/anims.json — animacje Microsoft Rocketbox (MIT) przekonwertowane z FBX (tylko kości ciała, 15 kl./s).
+trees/ — obrazy drzew wyrenderowane z modeli Poly Haven (CC0): tree_small_02, island_tree_01, fir_sapling_medium.
+tex/raked_dirt, tex/leafy_grass — Poly Haven, CC0.
+lib/SkeletonUtils.js — three.js r128 (MIT).
+
+v1.4:
+a3d/ — 3dassets.dev (https://3dassets.dev), licencja CC0 1.0 (bez obowiązku podpisu): samochody i pojazdy z zestawu
+      „Car Park and Road Vehicle Fleet”, ciągnik, rusztowanie, kontener i ogrodzenie budowy, sprzęt siłowni,
+      łóżko opiekuńcze, kozetka, stół do masażu, szafka apteczna, meble domowe i biurowe, lada, konsola DJ,
+      stojak na opony, kompresor. Lista plików i numerów modeli: a3d/SOURCES.txt.
+tex/clay_roof_tiles_02, grey_roof_tiles, white_stucco, yellow_plaster, rectangular_facade_tiles — Poly Haven, CC0.
+rb/anims.json — dodatkowo animacje Rocketbox (MIT): crouch_idle, crouch_gestic, take_picture.
+a3d/meetingtable.glb — 3dassets.dev, CC0 (stół narad w biurze prezesa).
+v1.7: a3d/ — kolejne modele 3dassets.dev (CC0): lada barowa, nalewak, hokery, darts, szafa grająca, bilard, stoliki i krzesła
+      restauracyjne, boks, ekspres do kawy, witryna z ciastami, stoliki bistro, fotele, rośliny (lista: a3d/SOURCES.txt).
+v1.8: a3d/ — kolejne modele 3dassets.dev (CC0): automaty do gry, stół do pokera, krzesła kasynowe, żyrandole, kasa kasyna,
+      sofa i stolik koktajlowy (zestaw „Casino Floor and Back Rooms”); podnośnik motocyklowy, montażownica, wyważarka kół,
+      kombinezon na manekinie (warsztat); kuchnia w kształcie L z wyspą, okrągły stół z krzesłami, komoda, stolik nocny,
+      zasłony, lampa łukowa (mieszkanie). Lista plików i numerów: a3d/SOURCES.txt.
+v1.9: rb/Female_Adult_10…15, 17, Female_Party_02 — Microsoft Rocketbox (MIT), kolejne postacie kobiet (garderoba);
+      rb/prev/*.jpg — miniatury z repozytorium Rocketbox (MIT).
+      a3d/ — 3dassets.dev (CC0): łazienka, regał, dywan, kinkiety, kask na stojaku, gitara, lustro, konsola, komoda,
+      szafka na buty, wycieraczka, grzejnik, zegar, plakaty (mieszkanie); huśtawki, zjeżdżalnia, piaskownica, ławki,
+      kontenery, drzwi garażowe (osiedle). Lista: a3d/SOURCES.txt. Bloki z wielkiej płyty, garaże, kiosk i trzepak — generowane w kodzie.
+v2.0: rb/anims.json — kolejne animacje Microsoft Rocketbox (MIT): cheer_04/05, gestic_laugh_loud, gestic_talk_excited_01, idle_nervous_01/02,
+      idle_drunk_01, drunk_gestic_01, sit_table_idle_*, sit_chair_idle_relaxed_01, gestic_listen_angry_01, idle_angry_01, gestic_shrug_01,
+      idle_stretch_arms_01, dancing_silly, drink_drinking (przycięte do 12 s).
+      a3d/dog.glb — 3dassets.dev, asset 20576 (CC0). Ikony aplikacji (icon-192/512.png) — wygenerowane dla gry.
+v2.1: OpenGameArt.org (CC0): prlBlock16 — „Residential building (lowpoly apartment block)”, autor Mixazzz; prlBlock9 — „Soviet Panel Apartment House 3D”, autor GGBotNet;
+      prlGarage — „Soviet Metal Garage 3D” (GGBotNet); prlSchool — „School from Moscow” (Mixazzz); prlClinic — „Hospital (Medical Center) from Moscow” (Mixazzz);
+      prlStove — „Gas Stove 3D” (GGBotNet); prlSubstation — „Electrical Substation 3D” (GGBotNet). Przekonwertowane z OBJ do GLB.
+      3dassets.dev (CC0): budynki miasta (Voxel City Districts), kostka (Cube House Wide), wiata przystanku, latarnia, trybuna, brama stadionu,
+      auta (Vehicle Collection HD, Road Car Showroom Lineup), autobus, drzewa, meble z PRL (kredens, witryna, telewizor kineskopowy, komoda, dywan, fotel),
+      kiosk, drabinki (trzepak). Lista: a3d/SOURCES.txt.
+v2.2: lib/Water.js i models/tex/water/waternormals.jpg — Three.js r128 (MIT). Poly Haven (CC0): street_lamp_02, shrub_01/02, utility_box_01,
+      exterior_aircon_unit, modular_street_seating, Chandelier_01, power_box_01, trashbag, planter_box_01, water_manhole_cover.
+      3dassets.dev (CC0): stół do ruletki, blackjack, kolumny, bar, neon, hostessa, fontanna (Casino Floor and Back Rooms).
+
+== Sketchfab (CC BY 4.0) — models/sk/ ==
+Modele zoptymalizowane (uproszczona siatka, tekstury WebP 1024 px), bez innych zmian.
+Licencja: Creative Commons Attribution 4.0 — https://creativecommons.org/licenses/by/4.0/
+- car126p.glb     "Fiat 126p" — Victorine — https://sketchfab.com/3d-models/9ba27f991d0d45ef96180483ea03f34c
+- car125p.glb     "Fiat 125p" — miechh — https://sketchfab.com/3d-models/01de3a195d6349519d84e472208c9e5e
+- policeVan.glb   "Semi-realistic Polish police transporter" — infamous_3D_modeler — https://sketchfab.com/3d-models/e43a68f92a7d42a28d82dc91e0367916
+- ikarus.glb      "Ikarus 280" — Randonavt — https://sketchfab.com/3d-models/66b07719e1fd42ecbcdbb889a1d1a09c
+- gymRack.glb     "Weight room set 1" — tylerhalterman — https://sketchfab.com/3d-models/1d18318c3e81407b8321159fb3424026
+- gymDumbbells.glb "Weight room set 2" — tylerhalterman — https://sketchfab.com/3d-models/fa481412927e43dfbeab9f6da464c15b
+- gymTreadmill.glb "Treadmill ProForm" — EmanuelRestrepoVelez — https://sketchfab.com/3d-models/03e4ff99ecc24e5f8ea49d4e8df876e8
+- gymBench.glb    "Bench press" — iveoutdoor — https://sketchfab.com/3d-models/d383c5f5cb1a46faa17da7f760deab89
+- skRoulette.glb  "Roulette table 2" — crittaa — https://sketchfab.com/3d-models/e175a88621894641b793d04d06d335e3
+- skSlot1.glb     "Slot machine" — davidgersch — https://sketchfab.com/3d-models/5b4f6094b2cd469fb2904c256f7515eb
+- skSlot2.glb     "Casino slot-machine" — kritamb — https://sketchfab.com/3d-models/49fc3271878e4e148fed325439b53a1a
+
+== Sketchfab (CC BY 4.0), część 2 — models/sk/ ==
+Zoptymalizowane (tekstury WebP 1024 px, uproszczona siatka tam, gdzie była bardzo gęsta).
+Zmiany: startLine.glb — logo na banerach zastąpione fikcyjnymi napisami; room90.glb — plakaty, okładki i zdjęcie zastąpione własnymi grafikami;
+tvPRL.glb — usunięte napisy producenta. Licencja: https://creativecommons.org/licenses/by/4.0/
+- trackOval.glb  "Dirt_Oval_Track_Obj" — Dakta.Grower.Nzl — https://sketchfab.com/3d-models/0b5d0c6e6bdf41f792d5ae2bc00cb6b7
+- bikeTracker.glb  "Harley-Davidson Custom Tracker - Free" — TulioPortela — https://sketchfab.com/3d-models/9b45e9be5c554222850cd532fa647254
+- bikeDirt.glb  "Mid poly dirt bike" — danilloribeiro — https://sketchfab.com/3d-models/3009c80ec6cc47fcaad27cf96f2a0822
+- bikeJawa.glb  "Motorcycle - Custom Bike "JAWA" (LOW-POLY)" — kreems — https://sketchfab.com/3d-models/13771fe558604aedae09b5157029e790
+- helmetRetro.glb  "Vintage Motorcycle Helmet" — gozdemrl — https://sketchfab.com/3d-models/539728553e314ede87d9c4e9fa129641
+- startLine.glb  "Starting Line" — Yanez-Designs — https://sketchfab.com/3d-models/ecb35b3e5b424f9dbf54174e6c5907de
+- stadLight.glb  "Stadium Light" — thundermind — https://sketchfab.com/3d-models/425625d154084a29a194dd2b0bb52fd5
+- turnstile.glb  "Low Poly Turnstiles" — anDDDres — https://sketchfab.com/3d-models/12536f966f9048dcba7e33fa08d9d6b5
+- blk12.glb  "Detailed 12 storey panel apartment building" — alwayshasbean — https://sketchfab.com/3d-models/cb7064bec48845fea62a830b2c692fb1
+- blk5.glb  "5 storey residential building" — alwayshasbean — https://sketchfab.com/3d-models/3468ccfd9e35495fb377f7c6d67518ae
+- blkSov.glb  "LOW POLY - SOVIET  APARTMENT BUILDING 8K" — Colin.Greenall — https://sketchfab.com/3d-models/05229ac1d1f94e6c8cacaad91110c602
+- blkEnter.glb  "Enterable Panel House" — c01l3d — https://sketchfab.com/3d-models/22a08dc43c1c4888ad8d33b7d2e69e81
+- khrush.glb  "Khrushchevka" — quizzes — https://sketchfab.com/3d-models/4c759da8b8914ec4924f68ee9cc3cbd5
+- kioskK67.glb  "Kiosk K67" — Cnodax — https://sketchfab.com/3d-models/cb9ff244c8cd4c1aad7fc47184e91c21
+- garSov.glb  "Abandoned Soviet Garages Pack Game-Ready" — olegolegperepelica — https://sketchfab.com/3d-models/fcf453872c2d4cfbad12197d072fbfc4
+- zuk.glb  "(FREE) Żuk 3D model" — lionsharp — https://sketchfab.com/3d-models/bb4OJb5V4L0hgYjM3vtGvPB7ZMt
+- roadsRu.glb  "Large modular pack of Russian roads" — UnkaII — https://sketchfab.com/3d-models/9fd19243e4fe4ddaaa627551477a9e27
+- roadsMod.glb  "Modular Roads Pack" — SquadCell — https://sketchfab.com/3d-models/99023ee0b2564395b47b40d22f51f7c2
+- room90.glb  "90-th Retro Room with Dendy" — brysew — https://sketchfab.com/3d-models/35eeb7b37fa9487caf90c1cf6e06f1a5
+- kitKhr.glb  "Kitchen “Khrushchevka”" — egors — https://sketchfab.com/3d-models/7dc8b713db2948edb628e535bf85af2e
+- wallUnit.glb  "PRL-Inspired Wall Unit" — PaperMouse — https://sketchfab.com/3d-models/e19889f198c34a7cb0c9ce79be355faf
+- tvPRL.glb  "Sony Trinitron PRL" — TinoD2 — https://sketchfab.com/3d-models/dce3f599de634388aef1eaf49e3606bf
+- officeSet.glb  "Office - Assets" — EvanPetrov — https://sketchfab.com/3d-models/16c1a779bb0a4055a26367741d39e059
+- kitchenSet.glb  "Kitchen - Assets" — EvanPetrov — https://sketchfab.com/3d-models/1bf20d2de7f749d889d69c42207ca669
+
+== Sketchfab (CC BY 4.0), część 3 — models/sk/ (v2.6) ==
+Zoptymalizowane (WebP, uproszczone siatki). Licencja: https://creativecommons.org/licenses/by/4.0/
+- bTenement.glb  "Low-poly Modular Building Tenement House" — Orzechu — https://sketchfab.com/3d-models/c579c4f421f94574b98e7eba7cd5f2a8
+- bBrickShop.glb  "Low-poly Old American brick building with shop." — Orzechu — https://sketchfab.com/3d-models/3170993b67ee4e58b27d69d5877f71bd
+- bOld.glb  "Old Building | Lowpoly" — Fridqeir — https://sketchfab.com/3d-models/1f304c6e56324c19955a18aa79b15b9f
+- bOldPack.glb  "Old Building Pack | Lowpoly" — Fridqeir — https://sketchfab.com/3d-models/081eccb97be8429c83b2e9fb407727e7
+- bResid.glb  "Low Poly Residential Buildings" — fdgasd7 — https://sketchfab.com/3d-models/302766f5645a41ed8c6b9c35c2020687
+- bPanel9.glb  "9-floor pannel building" — Randonavt — https://sketchfab.com/3d-models/0864d492795141ae98277ac564e3a657
+- bBrutal.glb  "Soviet Panel Brutal building (Baked)" — narighillya — https://sketchfab.com/3d-models/deb2133873534b8ebec4c97e5c7f6c3b
+- bShopOld.glb  "Abandoned | Building | Shop | Old | House" — yadrogames — https://sketchfab.com/3d-models/0ed14367314946b298d9a58db66da040
+- flatApp.glb  "Appartement" — crispimrafael — https://sketchfab.com/3d-models/6a7a5fe208344b2e8123a88923dbd5b3
+- tribune.glb  "Tribune" — Fridqeir — https://sketchfab.com/3d-models/be2c5d313dc742c6af15dc8beb2682e1
+- pubInt.glb  "Pub interior" — kidney_02 — https://sketchfab.com/3d-models/a6534141c33343b382dd23d519c3de73
+- pubCounter.glb  "Pub counter" — chris_models — https://sketchfab.com/3d-models/e3fe5390541649a0bb4dee299e3b07e7
+- poolTable.glb  "Pool Table Traditional" — fizyman — https://sketchfab.com/3d-models/e0b938c0c2e74eb794a49ebde2543977
+- jukebox.glb  "Jukebox" — I_Live — https://sketchfab.com/3d-models/127cd1a00ca143af9db9cf4e58ddd956
+- roulette2.glb  "Roulette Table" — Robilben — https://sketchfab.com/3d-models/18a27b0e326644a0b47887d07e0d0f99
+- stadZGc.glb  "Swiss Krono Arena (Falubaz Zielona Góra)" — bzbuas — https://sketchfab.com/3d-models/7fbf925bdfd34940b9b1300670162f3f (przycięty do stadionu i najbliższego otoczenia)
+
+== Microsoft Rocketbox (MIT) — models/rb/ — dodatkowe postacie v2.5: Sports_*, Business_*, Police_*, Chef_Female_01, Security_Female_01, Medical_Female_01, Construction_Male_01, Gardener_Male_01, Male_Adult_19, Male_Adult_21 ==
