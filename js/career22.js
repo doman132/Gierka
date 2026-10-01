@@ -258,7 +258,7 @@ const Duze = {
     const D = Duze.ROOMS[key]; if (!D) return null;
     let G;
     if (D.flat) { // jak mieszkanie w bloku (FlatX): ściany + gotowe wnętrze z modelu
-      const Y = World.LOCKER_Y; G = new THREE.Group(); World.venueGroup.add(G); G.userData.lights = [];
+      const Y = World.LOCKER_Y; G = new THREE.Group(); World.scene.add(G); G.userData.lights = []; // nie w grupie stadionu — ta bywa przebudowywana
       [[-1.8, 3.2], [1.5, 3.4], [2.6, 0.5], [0.3, -2.4], [-2.2, -3.6]].forEach(([x, z]) => { const l = new THREE.PointLight(0xfff0dc, 0.6, 7, 1.6); l.position.set(D.cx + x, Y + 2.3, z); l.visible = false; G.add(l); G.userData.lights.push(l); });
       const wallM = World.pbr('painted_plaster_wall', 3, 1, { color: '#ece6d8' });
       [[0, -D.D / 2 - 0.06, D.W + 0.3, 0.12], [0, D.D / 2 + 0.06, D.W + 0.3, 0.12], [-D.W / 2 - 0.06, 0, 0.12, D.D + 0.3], [D.W / 2 + 0.06, 0, 0.12, D.D + 0.3]].forEach(([x, z, w, d]) => { const m = new THREE.Mesh(new THREE.BoxGeometry(w, D.H, d), wallM); m.position.set(D.cx + x, Y + D.H / 2, z); G.add(m); });

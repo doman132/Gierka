@@ -324,6 +324,18 @@ const Safe = {
   const bf = Walk.frame;
   Walk.frame = function (dt) { if (Walk.room && !(World.rooms && World.rooms[Walk.room])) { Safe.fail(Walk.room); return; } return bf.call(this, dt); };
 })();
+// Przyczyna błędu „reading 'name'” w mieście: gdy modele aut (Props) dochodzą po wejściu do miasta,
+// stadion buduje się ponownie (World.useVenue → buildRooms) i lista pokoi była tworzona od zera —
+// miasto (i wnętrza Starego Miasta) znikały, a gra próbowała wrócić do nieistniejącego pokoju.
+// Pokoje, których grupa nadal wisi w scenie (nie należy do przebudowywanego stadionu), zostają.
+(() => {
+  const bbr = World.buildRooms;
+  World.buildRooms = function () {
+    const keep = World.rooms ? { ...World.rooms } : {}, r = bbr.apply(this, arguments);
+    Object.keys(keep).forEach(k => { const R = keep[k]; if (World.rooms[k] || !R || !R.group) return; let q = R.group; while (q.parent) q = q.parent; if (q.isScene) World.rooms[k] = R; }); // stary stadion jest już odpięty od sceny
+    return r;
+  };
+})();
 // pasek błędu: pierwszy błąd zostaje na wierzchu (kolejne to zwykle skutki), licznik kolejnych
 window.addEventListener('load', () => {
   Main.err = function (e) {

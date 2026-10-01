@@ -98,7 +98,7 @@ const Perf = {
     Perf.cells = [];
     root.traverse(o => {
       if (!o.isInstancedMesh || !o.frustumCulled || !o.geometry.boundingSphere || !(o.userData.chunk || o.userData.list)) return;
-      const C = o.userData.fk && Furn.cache[o.userData.fk], small = o.userData.chunk ? o.userData.small : !!C && Math.max(C.size.x, C.size.y, C.size.z) * 1.6 < 7; // ławki, latarnie, auta
+      const C = o.userData.fk && Furn.cache[o.userData.fk], small = o.userData.chunk ? o.userData.small : !!C && (sc => Math.max(C.size.x, C.size.z) * sc < 6 && C.size.y * sc < 8)((o.userData.list && o.userData.list[0] && o.userData.list[0].s) || 1); // ławki, latarnie, auta (wymiar × skala)
       Perf.cells.push({ m: o, c: o.geometry.boundingSphere.center.clone().applyMatrix4(o.matrixWorld), r: o.geometry.boundingSphere.radius, small });
     });
   },
@@ -108,6 +108,33 @@ const Perf = {
     if (typeof MapEdit !== 'undefined' && MapEdit.on) { Perf.cells.forEach(c => { c.m.visible = true; }); return; } // widok z góry edytora
     const cam = World.camera.position, det = Perf.detail(), far = (World.scene.fog && World.scene.fog.far) || 800;
     Perf.cells.forEach(c => { const d = cam.distanceTo(c.c) - c.r; c.m.visible = d < (c.small ? det : far + 40); });
+  },
+  /**
+   * Model do instancji „spłaszczony”: części o tym samym materiale scalone w jedną geometrię
+   * (auto z 20 części i 4 materiałów = 4 instancje zamiast 20 — w każdym kwadracie miasta).
+   * Części z kolorami wierzchołków, wieloma materiałami albo szkieletem zostają osobno.
+   */
+  flat(k) {
+    const C = Furn.cache[k]; if (!C) return null; if (C.flat !== undefined) return C.flat;
+    C.scene.updateMatrixWorld(true);
+    const by = new Map(), keep = []; let n = 0;
+    C.scene.traverse(o => {
+      if (!o.isMesh) return; n++;
+      const m = o.material, g = o.geometry;
+      if (o.isSkinnedMesh || o.isInstancedMesh || Array.isArray(m) || (m && m.vertexColors) || !g.attributes.position || (g.morphAttributes && g.morphAttributes.position)) { keep.push(o); return; }
+      if (!by.has(m)) by.set(m, []); by.get(m).push(o);
+    });
+    if (n < 3 || by.size + keep.length >= n) { C.flat = null; return null; }
+    const G = new THREE.Group();
+    by.forEach((list, mat) => {
+      if (list.length === 1) { keep.push(list[0]); return; }
+      const need = !!mat.map || !!mat.normalMap;
+      const geos = list.map(o => { let g = Props.toFloat(o.geometry.clone()); if (g.index) g = g.toNonIndexed(); if (!g.attributes.uv) g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(g.attributes.position.count * 2), 2)); if (!need) g.deleteAttribute('uv'); g.applyMatrix4(o.matrixWorld); return g; });
+      const m = new THREE.Mesh(Props.mergeGeos(geos), mat); m.castShadow = list[0].castShadow; m.receiveShadow = list[0].receiveShadow; G.add(m);
+    });
+    keep.forEach(o => { const c = new THREE.Mesh(o.geometry, o.material); o.matrixWorld.decompose(c.position, c.quaternion, c.scale); c.castShadow = o.castShadow; c.receiveShadow = o.receiveShadow; G.add(c); });
+    G.updateMatrixWorld(true);
+    C.flat = G; return G;
   },
   /** Modele miasta w tle (bez budowania świata), gdy gracz patrzy na mapę miasta */
   prefetch() {
@@ -142,6 +169,13 @@ const Perf = {
     Perf.frame++;
     if (typeof Walk !== 'undefined' && Walk.room === 'miasto') Perf.cull();
     return br.apply(this, arguments);
+  };
+  // instancje miasta ze „spłaszczonych” modeli (mniej wywołań rysowania)
+  const bi = Miasto.instances;
+  Miasto.instances = function (parent, k) {
+    const C = Furn.cache[k]; let F = null; try { F = Perf.flat(k); } catch (e) { console.warn('Perf.flat', k, e); if (C) C.flat = null; }
+    if (!F) return bi.apply(this, arguments);
+    const S = C.scene; C.scene = F; try { return bi.apply(this, arguments); } finally { C.scene = S; }
   };
   // po zbudowaniu miasta: kwadraty instancji, zamrożone macierze
   const bm = Miasto.make;
