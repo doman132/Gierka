@@ -169,11 +169,11 @@ Furn.SRC.stadZGc = 'sk/stadZGc.glb'; Furn.FIX.stadZGc = { ry: Math.PI / 2 };
 Furn.SRC.lampPH = 'sk/lampLow.glb'; // latarnia Poly Haven uproszczona z 20 tys. do 1,6 tys. trójkątów
 (() => {
   const M = Miasto, bi = M.instances;
-  // instancje dzielone na kwartały 120 m z własną sferą — to, co poza kadrem, nie jest rysowane
+  // instancje dzielone na kwartały 240 m z własną sferą — to, co poza kadrem, nie jest rysowane
   M.instances = function (parent, k, list) {
     if (typeof MapEdit !== 'undefined') list = MapEdit.filter(k, list); // obiekty usunięte w edytorze mapy
     const C = Furn.cache[k]; if (!C || list.length < 6) { const n0 = parent.children.length; bi.call(this, parent, k, list); for (let j = n0; j < parent.children.length; j++) if (parent.children[j].isInstancedMesh) { parent.children[j].userData.fk = k; parent.children[j].userData.list = list; } return; }
-    const cells = {}; list.forEach(it => { const key = Math.floor(it.x / 120) + ':' + Math.floor(it.z / 120); (cells[key] = cells[key] || []).push(it); });
+    const cells = {}; list.forEach(it => { const key = Math.floor(it.x / 240) + ":" + Math.floor(it.z / 240); (cells[key] = cells[key] || []).push(it); });
     Object.values(cells).forEach(l => {
       const n0 = parent.children.length; bi.call(this, parent, k, l);
       let cx = 0, cz = 0; l.forEach(i => { cx += i.x; cz += i.z; }); cx /= l.length; cz /= l.length;
