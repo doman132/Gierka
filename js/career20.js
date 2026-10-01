@@ -255,7 +255,7 @@ const Rejon = {
         : `<p class="small muted">${J.rep >= 20 ? 'Na razie cisza. Inne ekipy obserwują, jak rośniesz.' : 'Jesteś za mały, żeby ktoś się tobą przejmował.'}</p>`}</div>
       <div class="card s6"><h3>🏡 Wyjście z blokowiska</h3>${bar('Przez sport', ex.sport * 100)}${bar('Przez rejon', ex.street * 100)}${bar('Oszczędności na dom', ex.cash * 100)}
         <div class="talk-opts">${Rejon.HOUSES.map(H => `<button class="opt" data-ui="rjBuy" data-v="${H.id}" ${J.house === H.id || C.money < H.price ? 'disabled' : ''}><b>${esc(H.n)} — ${H.price.toLocaleString('pl-PL')} zł</b><small>${J.house === H.id ? 'twój dom' : esc(H.d)} · wygoda +${H.comfort}</small></button>`).join('')}</div>
-        <p class="small muted">Domy stoją na osiedlu „Słonecznym” na południu miasta (ul. Słoneczna). Auto kupisz w zakładce Sprzęt.</p></div>
+        <p class="small muted">Domy: osiedle „Słoneczne” na południu (ul. Słoneczna) i Stare Miasto na wschodzie (Biuro nieruchomości przy Rynku). Auto kupisz w zakładce Sprzęt albo w salonie na Starym Mieście.</p></div>
       <div class="card s6"><h3>🏆 Osiągnięcia (${Object.keys(J.ach).length}/${Rejon.ACH.length})</h3><ul class="list small">${Rejon.ACH.map(a => `<li class="${J.ach[a.id] ? 'good' : 'muted'}">${J.ach[a.id] ? '✔' : '○'} <b>${esc(a.n)}</b> — ${esc(a.d)}</li>`).join('')}</ul></div>
     </div>`;
   },

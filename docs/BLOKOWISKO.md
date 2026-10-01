@@ -298,3 +298,17 @@ const Pool = {
   - fazy świateł nigdy nie dają zielonego dwóm osiom naraz.
 - **Logika:** dostawa, porażka z wkładem (bez długu) i na kreskę (dług), zatrzymanie, limity zleceń, stary zapis.
 - **Nie sprawdzone:** chodzenie po pełnym mieście 3D. Modele (`models/`) nie są w repozytorium, więc miasto 3D trzeba przejść u siebie.
+
+---
+
+## v2.9 — większe miasto i Stare Miasto (`js/career22.js`)
+
+| Element | Opis |
+|---|---|
+| Granice mapy | x −380…1140, z −580…580 (1520 × 1160 m) — ok. 4× poprzednia powierzchnia; pokój `miasto` ma przesunięty środek i nowe wymiary |
+| Odblokowanie | `C.wkCount` (tygodnie kariery) ≥ 6 albo `C.d2`; do tego czasu łączniki ulic są przerwane (auta zawracają), a na x ≈ 394 stoi płot budowy z kolizją. Po otwarciu miasto przebudowuje się przy następnym wyjściu na ulicę |
+| Ulice dzielnicy | ul. Wschodnia, Nadrzeczna, Grodzka, Rynkowa, Zamkowa, Długa, Murowa, Bulwarowa — dopisane do `Miasto.ROADS`, więc mają chodniki, latarnie, pasy, światła i ruch |
+| Zabudowa | kamienice proceduralne (`World.realBuilding`, 8 pastelowych tynków, okna tylko od ulicy) + modele `euroB_*` z katalogu; na południu modele `cB*`; wszystko scalone na materiał |
+| Wnętrza | `Duze.ROOMS`: museum, agency, cinema, salon, apt2 — budowane przy pierwszym wejściu (`World.roomShell` + meble z `Furn`) |
+| Domy | `Rejon.HOUSES` z flagą `d2` (kamienica, loft, penthouse) — kupno w zakładce Rejon albo w biurze nieruchomości |
+| Wydajność | jedna woda (jedno odbicie) na całą rzekę, nabrzeża scalone, las jako billboardy (instancje), pola jako kilka płaszczyzn, okna kamienic jako instancje dzielone przez `perf.js` |

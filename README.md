@@ -299,3 +299,11 @@ Agenci i klauzule, wypożyczenia, Grand Prix i reprezentacje, Puchar Polski, leg
 - **Wydajność**: automatyczna rozdzielczość (Ustawienia → Grafika), cienie co drugą klatkę przy spadkach, przycinanie instancji do kadru, LOD dzielnicy i drobnych detali, statyczne macierze, modele miasta ładowane w tle.
 - Poprawka: błąd „Race is not defined” przy starcie (blokował przywracanie trybun na stadion meczowy).
 - Opis systemów, modele do pobrania i instrukcja importu: `docs/BLOKOWISKO.md`.
+
+## Wersja 2.9 — miasto 4× większe i Stare Miasto
+- **Mapa miasta 1520 × 1160 m** (ok. 4× więcej niż wcześniej): na wschodzie nowa dzielnica, na północy las miejski, na południu pola; rzeka płynie przez całą szerokość mapy.
+- **Stare Miasto** otwiera się z czasem — po 6 tygodniach kariery (wcześniej plac budowy z płotem i tablicą „otwarcie za N tyg.”). Dojazd ul. Wschodnią, ul. Nadrzeczną albo autobusem „Rynek”.
+- **Rynek**: ratusz z wieżą i zegarem, fontanna, stragany (obwarzanek), uliczny grajek, kolorowe kamienice w zwartych pierzejach; nad rzeką bulwar z drzewami, na południu nowe budynki.
+- **Budynki do zwiedzania (wnętrza 3D)**: Muzeum Żużla (wystawa, ściana sław z twoimi trofeami), Kino „Polonia” (seans, randka), Salon samochodowy (nowe auta: limuzyna, SUV coupé), Biuro nieruchomości „Kamienica” (wszystkie oferty).
+- **Nowe domy**: mieszkanie w kamienicy na Rynku (650 tys.), loft nad rzeką (1,2 mln), penthouse „Panorama” (3,5 mln) — z wnętrzem apartamentu (odpoczynek, sen).
+- Więcej aut i przechodniów; niebo podąża za kamerą; nabrzeża rzeki scalone w jedną siatkę (mniej wywołań rysowania).
